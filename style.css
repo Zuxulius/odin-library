@@ -1,6 +1,6 @@
 
 .formContainer {
-    display: none;
+    background-color: lightgrey;
     border: solid;
     border-radius: 10px;
     width: 30vw;
@@ -9,6 +9,7 @@
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 .myForm {
@@ -26,6 +27,34 @@
     display: block;
 }
 
+.remove {
+    transition: 200ms;
+    overflow: hidden;
+    background-color: rgb(233, 156, 156);
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+
+.remove:hover {
+    transition: 200ms;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.read {
+    border-radius: 15px;
+    position: absolute;
+    padding: 10px;
+    right: 10px;
+    bottom: 0;
+}
+
+.read:hover {
+    cursor: pointer;
+    border: 0.2px dotted;
+}
+
 .bookshelf {
     padding: 10px;
     display: grid;
@@ -41,17 +70,16 @@
 }
 
 .book {
+    position: relative;
     border-radius: 5px;
-    display: flex;
     background-color: lightyellow;
     border: solid lightslategray 1px;
     padding: 5px;
     text-align: center;
-    justify-content: space-between;
 }
 
 .info {
-    align-self: center;
+    margin-top: 50%;
 }
 
 .book h4 {
@@ -60,6 +88,7 @@
 }
 
 .book h3 {
+    width: 100%;
     margin-bottom: 0px;
     margin-top: 0px;
 }
