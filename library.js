@@ -1,5 +1,6 @@
 
 const myLibrary = [];
+const bookshelf = document.getElementsByClassName("bookshelf")[0];
 
 function Book(title, author, pages, read) {
     this.title = title
@@ -18,7 +19,34 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBooks() {
+    for (let index = 0; index < myLibrary.length; index++) {
+        const book = myLibrary[index];
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book");
+        bookshelf.appendChild(bookDiv);
+        const bookInfo = document.createElement("div");
+        bookInfo.classList.add("info");
+        bookDiv.appendChild(bookInfo);
 
+        const bookTitle = document.createElement("h3");
+        const by = document.createElement("h4");
+        const author = document.createElement("h3");
+        const pages = document.createElement("p");
+        const read = document.createElement("p");
+
+        bookTitle.innerHTML = book.title;
+        by.innerHTML = "by";
+        author.innerHTML = book.author;
+        pages.innerHTML = book.pages;
+        if (book.read) {
+            read.innerHTML = "Read"
+        } else {
+            read.innerHTML = "Not read"
+        }
+
+        bookInfo.append(bookTitle, by, author, pages, read);
+
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -49,3 +77,5 @@ document.addEventListener("DOMContentLoaded", function() {
 addBookToLibrary("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 450, read = true)
 addBookToLibrary("PIHKAL", "Alexander Shulgin & Ann Shulgin", 800, read = true)
 addBookToLibrary("Leonardo Da Vinci - A biography", "Walter Isaacson", 400, read = false)
+
+displayBooks();
