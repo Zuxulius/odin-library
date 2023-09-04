@@ -17,6 +17,9 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
+function displayBooks() {
+
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     const addBookButton = document.getElementsByClassName("add")[0];
@@ -42,3 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formContainer.style.display = "none";
     })
 })
+
+addBookToLibrary("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 450, read = true)
+addBookToLibrary("PIHKAL", "Alexander Shulgin & Ann Shulgin", 800, read = true)
+addBookToLibrary("Leonardo Da Vinci - A biography", "Walter Isaacson", 400, read = false)

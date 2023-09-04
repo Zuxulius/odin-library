@@ -22,3 +22,20 @@
     margin-top: 20px;
     margin-left: 45.5%;
 }
+
+.bookshelf {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 5%;
+    margin-left: 12.5vw;
+    width: 75vw;
+    height: 75vh;
+    border: solid 1px green;
+    gap: 10px;
+}
+
+.book {
+    background-color: lightyellow;
+    border: solid red 1px;
+}
