@@ -91,7 +91,9 @@ document.addEventListener("DOMContentLoaded", function() {
     addBookButton.addEventListener("click", function() {
         // Toggle form visibility
         if (formContainer.style.display === "none") {
-        formContainer.style.display = "block";
+            // Reset form
+            document.querySelector("form").reset();
+            formContainer.style.display = "block";
       } else {
         formContainer.style.display = "none";
       }
@@ -114,3 +116,5 @@ addBookToLibrary("PIHKAL", "Alexander Shulgin & Ann Shulgin", 800, read = true)
 addBookToLibrary("Leonardo Da Vinci - A biography", "Walter Isaacson", 400, read = false)
 
 displayBooks();
+
+// -Different layout for the grid repeating
