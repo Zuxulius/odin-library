@@ -21,7 +21,6 @@
 
 .add {
     margin-top: 20px;
-    width: 10%;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -39,13 +38,16 @@
 .remove:hover {
     transition: 200ms;
     border-radius: 5px;
-    padding: 5px;
+    padding-right: 7px;
+    padding-left: 7px;
+    cursor: pointer;
 }
 
 .read {
-    border-radius: 15px;
+    font-size: 11px;
+    border-radius: 10px;
     position: absolute;
-    padding: 10px;
+    padding: 5px;
     right: 10px;
     bottom: 0;
 }
@@ -58,18 +60,16 @@
 .bookshelf {
     padding: 10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
-    /* width: 75vw;
-    height: 75vh; */
     border: solid 1px green;
     gap: 10px;
 }
 
 .book {
+    height: 200px;
     position: relative;
     border-radius: 5px;
     background-color: lightyellow;
@@ -84,12 +84,12 @@
 .info {
 }
 
-.book h4 {
+.book h5 {
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
-.book h3 {
+.book h4 {
     width: 100%;
     margin-bottom: 0px;
     margin-top: 0px;

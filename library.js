@@ -39,7 +39,7 @@ function displayBooks() {
         // Add remove button
         const remove = document.createElement("button");
         remove.classList.add("remove");
-        remove.innerHTML = "Remove from library"
+        remove.innerHTML = "X"
         bookDiv.appendChild(remove);
         remove.addEventListener("click", function() {
             removeBook(index);
@@ -49,9 +49,9 @@ function displayBooks() {
         bookInfo.classList.add("info");
         bookDiv.appendChild(bookInfo);
 
-        const bookTitle = document.createElement("h3");
-        const by = document.createElement("h4");
-        const author = document.createElement("h3");
+        const bookTitle = document.createElement("h4");
+        const by = document.createElement("h5");
+        const author = document.createElement("h4");
         const pages = document.createElement("p");
         const read = document.createElement("p");
         read.classList.add("read");
@@ -116,5 +116,3 @@ addBookToLibrary("PIHKAL", "Alexander Shulgin & Ann Shulgin", 800, read = true)
 addBookToLibrary("Leonardo Da Vinci - A biography", "Walter Isaacson", 400, read = false)
 
 displayBooks();
-
-// -Different layout for the grid repeating
