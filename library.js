@@ -113,6 +113,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 addBookToLibrary("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 450, read = true)
 addBookToLibrary("PIHKAL", "Alexander Shulgin & Ann Shulgin", 800, read = true)
-addBookToLibrary("Leonardo Da Vinci - A biography", "Walter Isaacson", 400, read = false)
+addBookToLibrary("Leonardo Da Vinci - A Biography", "Walter Isaacson", 400, read = false)
 
 displayBooks();
