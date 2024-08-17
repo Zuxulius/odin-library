@@ -9,7 +9,7 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
-Book.prototype.info = () => {
+Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, read = ${this.read}`;
 }
 

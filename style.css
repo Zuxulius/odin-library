@@ -82,6 +82,7 @@
 }
 
 .info {
+    border: 1px solid grey;
 }
 
 .book h5 {
