@@ -2,15 +2,16 @@
 const myLibrary = [];
 const bookshelf = document.getElementsByClassName("bookshelf")[0];
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-}
-
-Book.prototype.info = function() {
-    return `${this.title} by ${this.author}, ${this.pages} pages, read = ${this.read}`;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    get info() {
+        return `Title: ${this.title},\n Author: ${this.author},\n Pages: ${this.pages},\n Read: ${this.read}`
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
