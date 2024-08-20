@@ -13,6 +13,10 @@ class Library {
     removeBook(index) {
         this.myLibrary.splice(index, 1);
     }
+
+    getBooks() {
+        return this.myLibrary;
+    }
 }
 
 const library = new Library();
@@ -47,11 +51,11 @@ function displayBooks() {
         bookshelf.removeChild(bookshelf.firstChild);
       }
     // Create the book and add it to bookshelf
-    for (let index = 0; index < library.myLibrary.length; index++) {
-        const book = library.myLibrary[index];
+    library.getBooks().forEach((book, index) => {
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
         bookshelf.appendChild(bookDiv);
+
         // Add remove button
         const remove = document.createElement("button");
         remove.classList.add("remove");
@@ -59,7 +63,8 @@ function displayBooks() {
         bookDiv.appendChild(remove);
         remove.addEventListener("click", function() {
             removeBook(index);
-        })
+        });
+
         // Add book info
         const bookInfo = document.createElement("div");
         bookInfo.classList.add("info");
@@ -71,6 +76,7 @@ function displayBooks() {
         const pages = document.createElement("p");
         const read = document.createElement("p");
         read.classList.add("read");
+
         // Add changeable read status
         read.addEventListener("click", function() {
             if (book.read) {
@@ -96,7 +102,7 @@ function displayBooks() {
         }
         // Append to DOM
         bookInfo.append(bookTitle, by, author, pages, read);
-    }
+    })
 }
 
 document.addEventListener("DOMContentLoaded", function() {
