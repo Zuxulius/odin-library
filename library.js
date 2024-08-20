@@ -29,8 +29,6 @@ class Book {
     }
 }
 
-const library = new Library();
-
 const UI = {
     bookshelf: document.getElementsByClassName("bookshelf")[0],
     addBookButton: document.getElementsByClassName("add")[0],
@@ -119,16 +117,7 @@ const UI = {
     }
 };
 
-function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read);
-    library.addBook(newBook);
-    UI.displayBooks();
-}
-
-function removeBook(index) {
-    library.removeBook(index);
-    displayBooks(); // Re-render the books
-  }
+const library = new Library();
 
 // Initialize the UI
 document.addEventListener("DOMContentLoaded", () => {
