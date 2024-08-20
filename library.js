@@ -1,6 +1,4 @@
 
-const bookshelf = document.getElementsByClassName("bookshelf")[0];
-
 class Library {
     constructor() {
         this.myLibrary = [];
@@ -19,19 +17,6 @@ class Library {
     }
 }
 
-const library = new Library();
-
-function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read);
-    library.addBook(newBook);
-    displayBooks();
-}
-
-function removeBook(index) {
-    library.removeBook(index);
-    displayBooks(); // Re-render the books
-  }
-
 class Book {
     constructor(title, author, pages, read) {
         this.title = title;
@@ -44,31 +29,45 @@ class Book {
     }
 }
 
+const library = new Library();
 
-function displayBooks() {
-    // Remove current display
-    while (bookshelf.firstChild) {
-        bookshelf.removeChild(bookshelf.firstChild);
-      }
-    // Create the book and add it to bookshelf
-    library.getBooks().forEach((book, index) => {
-        const bookDiv = document.createElement("div");
-        bookDiv.classList.add("book");
-        bookshelf.appendChild(bookDiv);
+const UI = {
+    bookshelf: document.getElementsByClassName("bookshelf")[0],
 
-        // Add remove button
+    displayBooks() {
+        // Remove current display
+        while (this.bookshelf.firstChild) {
+            this.bookshelf.removeChild(this.bookshelf.firstChild);
+        }
+
+        // Create the book and add it to bookshelf
+        library.getBooks().forEach((book, index) => {
+            const bookDiv = document.createElement("div");
+            bookDiv.classList.add("book");
+            this.bookshelf.appendChild(bookDiv);
+
+            const remove = this.createRemoveButton(index);
+            bookDiv.appendChild(remove);
+
+            const bookInfo = this.createBookInfo(book, index);
+            bookDiv.appendChild(bookInfo);
+        });
+    },
+
+    createRemoveButton(index) {
         const remove = document.createElement("button");
         remove.classList.add("remove");
-        remove.innerHTML = "X"
-        bookDiv.appendChild(remove);
+        remove.innerHTML = "X";
         remove.addEventListener("click", function() {
-            removeBook(index);
+            library.removeBook(index);
+            UI.displayBooks();
         });
+        return remove;
+    },
 
-        // Add book info
+    createBookInfo(book, index) {
         const bookInfo = document.createElement("div");
         bookInfo.classList.add("info");
-        bookDiv.appendChild(bookInfo);
 
         const bookTitle = document.createElement("h4");
         const by = document.createElement("h5");
@@ -85,9 +84,12 @@ function displayBooks() {
                 read.style.backgroundColor = "lightcoral";
             } else {
                 book.read = true;
-                read.innerHTML = "Read"
+                read.innerHTML = "Read";
                 read.style.backgroundColor = "lightgreen";
-        }})
+            }
+            UI.displayBooks();
+        });
+
         // Set info
         bookTitle.innerHTML = book.title;
         by.innerHTML = "by";
@@ -97,13 +99,26 @@ function displayBooks() {
             read.innerHTML = "Read";
             read.style.backgroundColor = "lightgreen";
         } else {
-            read.innerHTML = "Not read"
+            read.innerHTML = "Not read";
             read.style.backgroundColor = "lightcoral";
         }
+
         // Append to DOM
         bookInfo.append(bookTitle, by, author, pages, read);
-    })
+        return bookInfo;
+    }
+};
+
+function addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read);
+    library.addBook(newBook);
+    UI.displayBooks();
 }
+
+function removeBook(index) {
+    library.removeBook(index);
+    displayBooks(); // Re-render the books
+  }
 
 document.addEventListener("DOMContentLoaded", function() {
     const addBookButton = document.getElementsByClassName("add")[0];
