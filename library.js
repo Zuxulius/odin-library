@@ -1,6 +1,32 @@
 
-const myLibrary = [];
 const bookshelf = document.getElementsByClassName("bookshelf")[0];
+
+class Library {
+    constructor() {
+        this.myLibrary = [];
+    }
+
+    addBook(book) {
+        this.myLibrary.push(book);
+    }
+
+    removeBook(index) {
+        this.myLibrary.splice(index, 1);
+    }
+}
+
+const library = new Library();
+
+function addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read);
+    library.addBook(newBook);
+    displayBooks();
+}
+
+function removeBook(index) {
+    library.removeBook(index);
+    displayBooks(); // Re-render the books
+  }
 
 class Book {
     constructor(title, author, pages, read) {
@@ -14,17 +40,6 @@ class Book {
     }
 }
 
-function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);
-    // Display with new book
-    displayBooks();
-}
-
-function removeBook(index) {
-    myLibrary.splice(index, 1);
-    displayBooks(); // Re-render the books
-  }
 
 function displayBooks() {
     // Remove current display
@@ -32,8 +47,8 @@ function displayBooks() {
         bookshelf.removeChild(bookshelf.firstChild);
       }
     // Create the book and add it to bookshelf
-    for (let index = 0; index < myLibrary.length; index++) {
-        const book = myLibrary[index];
+    for (let index = 0; index < library.myLibrary.length; index++) {
+        const book = library.myLibrary[index];
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
         bookshelf.appendChild(bookDiv);
@@ -115,5 +130,3 @@ document.addEventListener("DOMContentLoaded", function() {
 addBookToLibrary("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 450, read = true)
 addBookToLibrary("PIHKAL", "Alexander Shulgin & Ann Shulgin", 800, read = true)
 addBookToLibrary("Leonardo Da Vinci - A Biography", "Walter Isaacson", 400, read = false)
-
-displayBooks();
